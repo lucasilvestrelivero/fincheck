@@ -11,15 +11,14 @@ function addAuthHeader(request: Request) {
   }
 }
 
-async function slowingRequest(request: Request) {
+async function slowingRequest() {
   await sleep(500);
-
-  return request;
 }
 
 export const httpClient = ky.create({
   prefixUrl: import.meta.env.VITE_API_URL,
   hooks: {
-    beforeRequest: [addAuthHeader, slowingRequest],
+    beforeRequest: [addAuthHeader],
+    afterResponse: [slowingRequest],
   },
 });

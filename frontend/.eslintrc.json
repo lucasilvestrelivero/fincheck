@@ -16,11 +16,11 @@
   "extends": [
     "airbnb",
     "plugin:react-hooks/recommended",
-    // "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@tanstack/query", "@typescript-eslint"],
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
@@ -58,5 +58,13 @@
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/ui/components/custom/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ]
 }
